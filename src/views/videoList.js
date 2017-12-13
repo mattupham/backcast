@@ -9,7 +9,7 @@ var VideoListView = Backbone.View.extend({
     this.$el.html(this.template());
     this.$el.children().html(
       this.collection.map(function(video) {
-        return new VideoListEntryView({model: video}).el; // What is the .el doing here?
+        return new VideoListEntryView({model: video}).el; //.el calls 
       }));
     
     return this;
