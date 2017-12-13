@@ -1,7 +1,5 @@
 var SearchView = Backbone.View.extend({
 
-  el: '.navbar', 
-
   initialize: function () {
     this.render();
   }, 

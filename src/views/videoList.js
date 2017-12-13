@@ -1,20 +1,17 @@
 var VideoListView = Backbone.View.extend({
   
-  el: '.list', 
   initialize: function () {
     this.render();
-    //pass in model into VideoListEntryView()
-    //this.videoListEntries = new VideoListEntryView(/*{collection: exampleVideoData}*/);
-    // this.videoListEntry = new VideoListEntryView({
-    //   el: '.video-list', 
-    //   collection: this.videos
-    // });
-    // console.log('VIDEO LIST VIEW RENDERED');
   }, 
 
   render: function() {
     this.$el.children().detach();
     this.$el.html(this.template());
+    this.$el.children().html(
+      this.collection.map(function(video) {
+        return new VideoListEntryView({model: video}).el; // What is the .el doing here?
+      }));
+    
     return this;
   },
 

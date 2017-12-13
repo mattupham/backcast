@@ -3,33 +3,31 @@ var AppView = Backbone.View.extend({
   el: '#app',
 
   initialize: function() {
-    this.videos = new Videos();
+    this.videos = new Videos(exampleVideoData);
     this.render();
   },
 
 
   render: function() {
+    // html 
+    this.$el.html(this.template());
     
-    this.videoList = new VideoListView({
+    
+    new SearchView({
+      el: '.search', 
       collection: this.videos
     });
-    console.log(this.videoList);
     
-    
-    this.searchBar = new SearchView({
-      el: '.navbar', 
+    new VideoListView({
+      el: '.list', 
       collection: this.videos
     });
-    console.log('SEARCHBAR WAS RENDERED');
     
-    
-    this.videoPlayer = new VideoPlayerView({
+    new VideoPlayerView({
       el: '.player', 
       collection: this.videos
     });
-    console.log('VIDEO PLAYER WAS RENDERED');
     
-    this.$el.html(this.template());
     return this;
   },
 
